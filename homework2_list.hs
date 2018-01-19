@@ -48,12 +48,4 @@ parts lst = check 2 lst where
 
 -- 7:
 parts2 :: Ord a => [a] -> Bool
-parts2 lst = divide lst ([], []) where
-    divide [] res = check res
-    divide (x:xs) ([], s) = divide xs ([x], s)
-    divide (x:xs) (f, []) = if last f >= x then divide xs (f, [x]) else divide xs (x : f, [])
-    divide (x:xs) (f, s) = if last f < x then divide xs (x : f, []) else
-        if last s < x then divide xs (f, x : s) else False
-    check (f, s) | length f == length s = True
-                 | length f > length s = if head f check (tail f) 
-                 | otherwise = balance s f
+parts2 lst = 
